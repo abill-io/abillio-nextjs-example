@@ -45,7 +45,7 @@ const personalSchema = z.object({
   first_name: z.string().min(1),
   last_name: z.string().min(1),
   gender: z.enum(['male', 'female', 'other']),
-  birth_date: z.date({ required_error: 'A date of birth is required.' }).nullable(),
+  birth_date: z.date({ error: 'A date of birth is required.' }).nullable(),
   country: z.string().min(2),
   personal_code: z.string().min(1),
   tax_number: z.string().optional(),
@@ -1299,7 +1299,7 @@ export default function MultiStepOnboardingForm({ language }: { language: string
                           <PopoverContent className="w-auto p-0" align="start">
                             <Calendar
                               mode="single"
-                              captionLayout="dropdown-buttons"
+                              captionLayout="dropdown"
                               selected={field.value ?? undefined}
                               onSelect={(date) => {
                                 field.onChange(date);
@@ -1308,9 +1308,9 @@ export default function MultiStepOnboardingForm({ language }: { language: string
                               disabled={(date) =>
                                 date > new Date() || date < new Date('1900-01-01')
                               }
-                              initialFocus
-                              fromYear={1900}
-                              toYear={new Date().getFullYear()}
+                              autoFocus
+                              startMonth={new Date(1900, 0)}
+                              endMonth={new Date(new Date().getFullYear(), 11)}
                             />
                           </PopoverContent>
                         </Popover>
