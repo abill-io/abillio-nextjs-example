@@ -4,7 +4,7 @@ import crypto from 'crypto';
 
 // !!! Newer import this file in frontend (client side), only server side is allowed
 
-const API_URL = process.env.ABILLIO_API_URL || 'https://api-staging.abill.io';
+const API_URL = process.env.ABILLIO_API_URL || 'https://api.abillio.dev';
 const API_KEY = process.env.ABILLIO_API_KEY!;
 const API_SECRET = process.env.ABILLIO_API_SECRET!;
 
